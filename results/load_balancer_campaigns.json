@@ -1,0 +1,90 @@
+{
+  "note": "Two campaigns of the load-balancer experiment (HAProxy 3.2.0 TCP mode, balance random, one enforcing and one non-enforcing OpenSSL 3.5.4 backend). Campaign 1: run of 2026-10-01 (paper v3); campaign 2: run of 2026-10-02 (testbed.json).",
+  "campaign1": {
+    "1": {
+      "trials": 200,
+      "Enf": 55,
+      "Pref": 145
+    },
+    "2": {
+      "trials": 200,
+      "Enf": 13,
+      "Pref": 31,
+      "heterogeneous": 156
+    },
+    "4": {
+      "trials": 200,
+      "Enf": 3,
+      "Pref": 6,
+      "heterogeneous": 191
+    }
+  },
+  "campaign2": {
+    "1": {
+      "trials": 200,
+      "Enf": 57,
+      "Pref": 143,
+      "false_Enf_theory": 0.25
+    },
+    "2": {
+      "trials": 200,
+      "Enf": 16,
+      "heterogeneous": 148,
+      "Pref": 36,
+      "false_Enf_theory": 0.0625
+    },
+    "4": {
+      "trials": 200,
+      "Enf": 1,
+      "heterogeneous": 195,
+      "Pref": 4,
+      "false_Enf_theory": 0.00390625
+    }
+  },
+  "independence_tests_pooled_400": {
+    "R1_falseEnf": {
+      "obs": 112,
+      "exp": 100.0,
+      "p_upper": 0.093
+    },
+    "R2_falseEnf": {
+      "obs": 29,
+      "exp": 25.0,
+      "p_upper": 0.23
+    },
+    "R2_nonheterogeneous": {
+      "obs": 96,
+      "exp": 100.0,
+      "p_upper": 0.696
+    },
+    "R4_falseEnf": {
+      "obs": 4,
+      "exp": 1.5625,
+      "p_upper": 0.073
+    },
+    "R4_nonheterogeneous": {
+      "obs": 14,
+      "exp": 6.25,
+      "p_upper": 0.0048
+    }
+  },
+  "controls_R4": {
+    "random(1)": {
+      "4": {
+        "trials": 200,
+        "heterogeneous": 197,
+        "Pref": 3,
+        "falseEnf_under_independence": 0.00390625,
+        "nonheterogeneous_under_independence": 0.015625
+      }
+    },
+    "roundrobin": {
+      "4": {
+        "trials": 200,
+        "heterogeneous": 200,
+        "falseEnf_under_independence": 0.00390625,
+        "nonheterogeneous_under_independence": 0.015625
+      }
+    }
+  }
+}

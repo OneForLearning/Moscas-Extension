@@ -1,0 +1,22 @@
+O-A OpenSSL Enf ['X25519MLKEM768'] refused refused N False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+O-B OpenSSL En ['X25519'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+O-C OpenSSL N ['X25519'] accepted accepted N None None False 0 {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+O-D OpenSSL Pref* ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+O-D2 OpenSSL Pref ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+O-E OpenSSL Enf ['X25519MLKEM768'] refused refused Enf False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+O-F OpenSSL Pref* ['X25519MLKEM768'] accepted accepted N True False True unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+O-H OpenSSL Enf ['X25519MLKEM768'] refused refused N True False None unknown {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+O-I OpenSSL Enf ['X25519MLKEM768'] refused refused N False True None unknown {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+O-G OpenSSL Enf [] refused refused Enf False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': False, 'pq_only_1024': True} ['alert:40', 'alert:70'] stable
+N-1 nginx Enf ['X25519MLKEM768'] refused refused N False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+N-2 nginx En ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+N-3 nginx Pref* ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+H-1 HAProxy Enf ['X25519MLKEM768'] refused refused N False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+H-2 HAProxy Pref* ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+G-1 Go 1.24 Enf ['X25519MLKEM768'] refused refused N False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+G-2 Go 1.24 Pref ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+G-3 Go 1.24 Pref ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+R-1 rustls Enf ['X25519MLKEM768'] refused refused N False False None 1 (unless psk_ke is accepted when it is the only mode offered) {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+R-2 rustls En ['X25519MLKEM768'] accepted accepted N False False False unknown {'hybrid_required': False, 'pq_only_1024': False} ['alert:40'] stable
+X-mTLS OpenSSL Enf ['X25519MLKEM768'] refused refused N None None None unknown {'hybrid_required': True, 'pq_only_1024': False} ['alert:40', 'alert:70'] stable
+X-ACL TCP inconclusive [] inconclusive inconclusive N None None None unknown {'hybrid_required': False, 'pq_only_1024': False} ['transport'] stable

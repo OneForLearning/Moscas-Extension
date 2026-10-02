@@ -1,0 +1,690 @@
+{
+  "openssl_client": "OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)",
+  "configs": {
+    "O-A": {
+      "stack": "OpenSSL",
+      "description": "hybrid only, TLS 1.3 only",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-B": {
+      "stack": "OpenSSL",
+      "description": "X25519 then hybrid, server order",
+      "expected_kex": "En",
+      "result": {
+        "kex": "En",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-C": {
+      "stack": "OpenSSL",
+      "description": "classical only",
+      "expected_kex": "N",
+      "result": {
+        "kex": "N",
+        "control": "fail",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": null,
+        "early_data_accepted": null,
+        "nu_server_side": "0",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-D": {
+      "stack": "OpenSSL",
+      "description": "hybrid then X25519, server order",
+      "expected_kex": "Pref*",
+      "result": {
+        "kex": "Pref*",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-D2": {
+      "stack": "OpenSSL",
+      "description": "as O-D with tuple separator: X25519MLKEM768/X25519",
+      "expected_kex": "Pref",
+      "result": {
+        "kex": "Pref",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-E": {
+      "stack": "OpenSSL",
+      "description": "hybrid only + ML-DSA-65 certificate",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "Enf",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-F": {
+      "stack": "OpenSSL",
+      "description": "as O-D, psk_ke allowed and preferred",
+      "expected_kex": "Pref",
+      "result": {
+        "kex": "Pref*",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": true,
+        "psk_ke_selected": true,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-H": {
+      "stack": "OpenSSL",
+      "description": "as O-A, psk_ke allowed and preferred",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": true,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-I": {
+      "stack": "OpenSSL",
+      "description": "as O-A, 0-RTT early data accepted",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": true,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "O-G": {
+      "stack": "OpenSSL",
+      "description": "pure ML-KEM-1024 + ML-DSA-87 (PQ-only profile)",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "Enf",
+        "observed": [],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": true
+        },
+        "pure_mlkem1024": true,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": []
+      },
+      "stable_over_5": true
+    },
+    "N-1": {
+      "stack": "nginx",
+      "description": "ssl_ecdh_curve X25519MLKEM768, TLSv1.3",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "N-2": {
+      "stack": "nginx",
+      "description": "ssl_ecdh_curve X25519MLKEM768:X25519, TLSv1.2+1.3",
+      "expected_kex": null,
+      "result": {
+        "kex": "En",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "N-3": {
+      "stack": "nginx",
+      "description": "as N-2, ssl_prefer_server_ciphers on",
+      "expected_kex": null,
+      "result": {
+        "kex": "Pref*",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "H-1": {
+      "stack": "HAProxy",
+      "description": "curves X25519MLKEM768, ssl-min-ver TLSv1.3",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "H-2": {
+      "stack": "HAProxy",
+      "description": "curves X25519MLKEM768:X25519",
+      "expected_kex": null,
+      "result": {
+        "kex": "Pref*",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "G-1": {
+      "stack": "Go 1.24",
+      "description": "CurvePreferences [X25519MLKEM768], TLS 1.3",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_128_GCM_SHA256"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "G-2": {
+      "stack": "Go 1.24",
+      "description": "CurvePreferences [X25519MLKEM768, X25519, P-256]",
+      "expected_kex": null,
+      "result": {
+        "kex": "Pref",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_128_GCM_SHA256"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "G-3": {
+      "stack": "Go 1.24",
+      "description": "CurvePreferences [X25519, P-256, X25519MLKEM768]",
+      "expected_kex": null,
+      "result": {
+        "kex": "Pref",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_128_GCM_SHA256"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "R-1": {
+      "stack": "rustls",
+      "description": "kx_groups [X25519MLKEM768], TLS 1.3",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "1 (unless psk_ke is accepted when it is the only mode offered)",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "R-2": {
+      "stack": "rustls",
+      "description": "kx_groups [X25519MLKEM768, X25519, P-256]",
+      "expected_kex": null,
+      "result": {
+        "kex": "En",
+        "control": "pass",
+        "classical_tls13": "accepted",
+        "tls12": "accepted",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": false,
+        "psk_ke_selected": false,
+        "early_data_accepted": false,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "X-mTLS": {
+      "stack": "OpenSSL",
+      "description": "hybrid only, client certificate required",
+      "expected_kex": "Enf",
+      "result": {
+        "kex": "Enf",
+        "control": "pass",
+        "classical_tls13": "refused",
+        "tls12": "refused",
+        "auth": "N",
+        "observed": [
+          "X25519MLKEM768"
+        ],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": null,
+        "early_data_accepted": null,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": true,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "alert:40",
+          "alert:70"
+        ],
+        "ciphers": [
+          "TLS_AES_256_GCM_SHA384"
+        ]
+      },
+      "stable_over_5": true
+    },
+    "X-ACL": {
+      "stack": "TCP",
+      "description": "listener that resets every connection",
+      "expected_kex": "inconclusive",
+      "result": {
+        "kex": "inconclusive",
+        "control": "fail",
+        "classical_tls13": "inconclusive",
+        "tls12": "inconclusive",
+        "auth": "N",
+        "observed": [],
+        "psk_ke_inherits_classical": null,
+        "psk_ke_selected": null,
+        "early_data_accepted": null,
+        "nu_server_side": "unknown",
+        "compliance": {
+          "hybrid_required": false,
+          "pq_only_1024": false
+        },
+        "pure_mlkem1024": false,
+        "alerts": [
+          "transport"
+        ],
+        "ciphers": []
+      },
+      "stable_over_5": true
+    }
+  },
+  "load_balancer": {}
+}

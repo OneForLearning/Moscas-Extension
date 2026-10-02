@@ -1,0 +1,23 @@
+{
+  "openssl_client": "OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)",
+  "configs": {},
+  "load_balancer": {
+    "random(1)": {
+      "4": {
+        "trials": 200,
+        "heterogeneous": 197,
+        "Pref": 3,
+        "falseEnf_under_independence": 0.00390625,
+        "nonheterogeneous_under_independence": 0.015625
+      }
+    },
+    "roundrobin": {
+      "4": {
+        "trials": 200,
+        "heterogeneous": 200,
+        "falseEnf_under_independence": 0.00390625,
+        "nonheterogeneous_under_independence": 0.015625
+      }
+    }
+  }
+}
